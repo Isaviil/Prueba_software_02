@@ -41,4 +41,15 @@ class PedidoServiceTest {
 
         assertEquals("La cantidad debe ser mayor a cero", mensaje);
     }
+
+    @Test
+    @DisplayName("Debe fallar si la fecha de entrega es anterior a la fecha actual")
+    void testFechaEntregaInvalida() {
+        PedidoService service = new PedidoService();
+
+        // Fecha inválida: ayer
+        String mensaje = service.registrarPedido("AB123", "cliente@email.com", 1, LocalDate.now().minusDays(1));
+
+        assertEquals("Ingrese una fecha de entrega válida", mensaje);
+    }
 }
