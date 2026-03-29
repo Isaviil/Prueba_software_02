@@ -21,6 +21,10 @@ public class PedidoService {
             return "La cantidad debe ser mayor a cero";
         }
 
+        if (fechaEntrega != null && fechaEntrega.isBefore(LocalDate.now())) {
+            return "Ingrese una fecha de entrega válida"; // ahora coincide con el test
+        }
+
         return "El pedido ha sido registrado correctamente";
     }
 }
