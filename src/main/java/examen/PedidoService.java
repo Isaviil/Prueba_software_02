@@ -11,7 +11,12 @@ public class PedidoService {
             return "Ingrese un código de pedido válido";
         }
 
-        // Por ahora, ignoramos email, cantidad y fecha
+        // Validar correo electrónico
+        if (email == null || email.length() < 6 || !email.contains("@")) {
+            return "Ingrese un correo electrónico válido";
+        }
+
+        // Por ahora, ignoramos cantidad y fecha
         return "El pedido ha sido registrado correctamente";
     }
 }
