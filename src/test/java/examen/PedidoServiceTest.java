@@ -31,4 +31,14 @@ class PedidoServiceTest {
         assertEquals("Ingrese un correo electrónico válido", mensaje);
     }
 
+    @Test
+    @DisplayName("Debe fallar si la cantidad de productos es menor o igual a cero")
+    void testCantidadInvalida() {
+        PedidoService service = new PedidoService();
+
+        // Cantidad inválida: 0
+        String mensaje = service.registrarPedido("AB123", "cliente@email.com", 0, LocalDate.now().plusDays(1));
+
+        assertEquals("La cantidad debe ser mayor a cero", mensaje);
+    }
 }
