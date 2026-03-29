@@ -29,7 +29,7 @@ class EnvioServiceTest {
         // Crear mock de EnvioService
         EnvioService envioMock = Mockito.mock(EnvioService.class);
 
-        // Configurar mock para lanzar excepción si setPeso > 10
+        // Configurar mock para lanzar excepción si setPeso
         Mockito.doThrow(new IllegalArgumentException("Peso supera el límite"))
                 .when(envioMock).setPeso(11.0);
 
