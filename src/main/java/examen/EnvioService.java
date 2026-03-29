@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class EnvioService {
-    // clases
+    // clase
     private String codigoEnvio;
     private double peso;
     private double largo;

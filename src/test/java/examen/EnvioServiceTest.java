@@ -19,7 +19,7 @@ class EnvioServiceTest {
                 EnvioService.TipoEnvio.EXPRESS, "Av. Test 123", LocalDate.now()
         );
 
-        // Esto FALLARÁ la primera vez porque aún no tenemos lógica de límite de peso
+        // Esto FALLARÁ la primera vez porque aún no tenemos lógica de límite
         assertThrows(IllegalArgumentException.class, () -> envio.setPeso(11.0));
     }
 
