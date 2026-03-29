@@ -5,6 +5,11 @@ import java.time.LocalDate;
 public class PedidoService {
 
     public String registrarPedido(String codigo, String email, int cantidad, LocalDate fechaEntrega) {
+
+        if (codigo == null || codigo.isBlank() || email == null || email.isBlank() || fechaEntrega == null) {
+            throw new IllegalArgumentException("Debe ingresar todos los datos requeridos");
+        }
+
         // Call all validations
         validarCodigo(codigo);
         validarEmail(email);
