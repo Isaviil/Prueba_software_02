@@ -20,4 +20,15 @@ class PedidoServiceTest {
         assertEquals("El pedido ha sido registrado correctamente", mensaje);
     }
 
+    @Test
+    @DisplayName("Debe fallar si el correo electrónico es inválido")
+    void testCorreoInvalido() {
+        PedidoService service = new PedidoService();
+
+        // Correo inválido: menos de 6 caracteres o sin "@"
+        String mensaje = service.registrarPedido("AB123", "mail", 1, LocalDate.now().plusDays(1));
+
+        assertEquals("Ingrese un correo electrónico válido", mensaje);
+    }
+
 }
