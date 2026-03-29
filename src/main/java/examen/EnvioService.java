@@ -21,7 +21,6 @@ public class EnvioService {
     private static final double RECARGO_PESO = 50.0;
     private static final List<String> ZONAS_RESTRINGIDAS = Arrays.asList("Zona1", "Zona2");
 
-
     public EnvioService(String codigoEnvio, double peso, double largo, double ancho, double alto,
                         double distanciaKm, TipoEnvio tipoEnvio, String direccion, LocalDate fechaEntregaEstimad) {
         this.codigoEnvio = codigoEnvio;
@@ -35,37 +34,26 @@ public class EnvioService {
         this.fechaEntregaEstimad = fechaEntregaEstimad;
     }
 
-
     public String getCodigoEnvio() { return codigoEnvio; }
     public void setCodigoEnvio(String codigoEnvio) { this.codigoEnvio = codigoEnvio; }
-
     public double getPeso() { return peso; }
     public void setPeso(double peso) { this.peso = peso; }
-
     public double getLargo() { return largo; }
     public void setLargo(double largo) { this.largo = largo; }
-
     public double getAncho() { return ancho; }
     public void setAncho(double ancho) { this.ancho = ancho; }
-
     public double getAlto() { return alto; }
     public void setAlto(double alto) { this.alto = alto; }
-
     public double getDistanciaKm() { return distanciaKm; }
     public void setDistanciaKm(double distanciaKm) { this.distanciaKm = distanciaKm; }
-
     public TipoEnvio getTipoEnvio() { return tipoEnvio; }
     public void setTipoEnvio(TipoEnvio tipoEnvio) { this.tipoEnvio = tipoEnvio; }
-
     public String getDireccion() { return direccion; }
     public void setDireccion(String direccion) { this.direccion = direccion; }
-
     public LocalDate getFechaEntregaEstimad() { return fechaEntregaEstimad; }
     public void setFechaEntregaEstimad(LocalDate fechaEntregaEstimad) { this.fechaEntregaEstimad = fechaEntregaEstimad; }
-
     public double getTarifa() { return tarifa; }
     public void setTarifa(double tarifa) { this.tarifa = tarifa; }
-
 
     public enum TipoEnvio {
         EXPRESS,
@@ -77,5 +65,4 @@ public class EnvioService {
             throw new IllegalArgumentException("La dirección debe ser válida y no nula");
         }
     }
-
 }
