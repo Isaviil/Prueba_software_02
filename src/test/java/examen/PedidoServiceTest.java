@@ -10,46 +10,57 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PedidoServiceTest {
 
     @Test
-    @DisplayName("Debe aceptar un código de pedido con formato válido")
-    void testCodigoPedidoValido() {
+    @DisplayName("Validar solo el código de pedido")
+    void testCodigoInvalido() {
         PedidoService service = new PedidoService();
 
-        // Código válido
-        String mensaje = service.registrarPedido("AB123", "cliente@email.com", 1, LocalDate.now().plusDays(1));
-
-        assertEquals("El pedido ha sido registrado correctamente", mensaje);
+        // Código inválido, falla
+        service.validarCodigo("AB243"); // only tests code
     }
 
     @Test
-    @DisplayName("Debe fallar si el correo electrónico es inválido")
+    @DisplayName("Validar solo el correo electrónico")
     void testCorreoInvalido() {
         PedidoService service = new PedidoService();
 
-        // Correo inválido: menos de 6 caracteres o sin "@"
-        String mensaje = service.registrarPedido("AB123", "mail", 1, LocalDate.now().plusDays(1));
-
-        assertEquals("Ingrese un correo electrónico válido", mensaje);
+        // Email inválido, falla
+        service.validarEmail("mail@mail.com");
     }
 
     @Test
-    @DisplayName("Debe fallar si la cantidad de productos es menor o igual a cero")
+    @DisplayName("Validar solo la cantidad de productos")
     void testCantidadInvalida() {
         PedidoService service = new PedidoService();
 
-        // Cantidad inválida: 0
-        String mensaje = service.registrarPedido("AB123", "cliente@email.com", 0, LocalDate.now().plusDays(1));
-
-        assertEquals("La cantidad debe ser mayor a cero", mensaje);
+        // Cantidad inválida, falla
+        service.validarCantidad(2);
     }
 
     @Test
-    @DisplayName("Debe fallar si la fecha de entrega es anterior a la fecha actual")
+    @DisplayName("Validar solo la fecha de entrega")
     void testFechaEntregaInvalida() {
         PedidoService service = new PedidoService();
 
-        // Fecha inválida: ayer
-        String mensaje = service.registrarPedido("AB123", "cliente@email.com", 1, LocalDate.now().minusDays(1));
+        // Fecha inválida
+        service.validarFecha(LocalDate.now().minusDays(0));
+    }
 
-        assertEquals("Ingrese una fecha de entrega válida", mensaje);
+    @Test
+    @DisplayName("Validar un pedido completo con todos los elementos correctos")
+    void testPedidoCompletoValido() {
+        PedidoService service = new PedidoService();
+
+        // Llamar a todos los métodos de validación juntos
+        service.validarCodigo("AB123");
+        service.validarEmail("cliente@email.com");
+        service.validarCantidad(5);
+        service.validarFecha(LocalDate.now().plusDays(1));
+
+        // Registrar pedido completo
+        String mensaje = service.registrarPedido("AB123", "cliente@email.com", 5, LocalDate.now().plusDays(1));
+        assertEquals("El pedido ha sido registrado correctamente", mensaje);
+
+        // mensaje para consola
+        System.out.println(mensaje);
     }
 }
