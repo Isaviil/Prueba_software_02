@@ -16,7 +16,11 @@ public class PedidoService {
             return "Ingrese un correo electrónico válido";
         }
 
-        // Por ahora, ignoramos cantidad y fecha
+        // Validar cantidad de productos
+        if (cantidad <= 0) {
+            return "La cantidad debe ser mayor a cero";
+        }
+
         return "El pedido ha sido registrado correctamente";
     }
 }
