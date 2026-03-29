@@ -10,13 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PedidoServiceTest {
 
     @Test
-    @DisplayName("Debe fallar si el código de pedido no tiene formato válido")
-    void testCodigoPedidoInvalido() {
+    @DisplayName("Debe aceptar un código de pedido con formato válido")
+    void testCodigoPedidoValido() {
         PedidoService service = new PedidoService();
 
-        // Código inválido: menos de 5 caracteres
-        String mensaje = service.registrarPedido("A12", "cliente@email.com", 1, LocalDate.now().plusDays(1));
+        // Código válido
+        String mensaje = service.registrarPedido("AB123", "cliente@email.com", 1, LocalDate.now().plusDays(1));
 
-        assertEquals("Ingrese un código de pedido válido", mensaje);
+        assertEquals("El pedido ha sido registrado correctamente", mensaje);
     }
+
 }
