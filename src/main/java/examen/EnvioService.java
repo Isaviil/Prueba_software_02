@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class EnvioService {
-    // clase
+
     private String codigoEnvio;
     private double peso;
     private double largo;
@@ -36,8 +36,16 @@ public class EnvioService {
 
     public String getCodigoEnvio() { return codigoEnvio; }
     public void setCodigoEnvio(String codigoEnvio) { this.codigoEnvio = codigoEnvio; }
+
     public double getPeso() { return peso; }
-    public void setPeso(double peso) { this.peso = peso; }
+    // ✅ Added validation logic
+    public void setPeso(double peso) {
+        if (peso > PESO_LIMITE) {
+            throw new IllegalArgumentException("Peso supera el límite");
+        }
+        this.peso = peso;
+    }
+
     public double getLargo() { return largo; }
     public void setLargo(double largo) { this.largo = largo; }
     public double getAncho() { return ancho; }

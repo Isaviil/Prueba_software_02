@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class EnvioServiceTest {
-
+    // Ahora funcional
     @Test
     @DisplayName("Primer test: peso sobre límite falla con clase real")
     void testPesoSobreLimiteReal() {
