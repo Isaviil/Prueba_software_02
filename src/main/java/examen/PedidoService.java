@@ -12,6 +12,6 @@ public class PedidoService {
         }
 
         // Por ahora, ignoramos email, cantidad y fecha
-        return "El pedido ha sido registrado ";
+        return "El pedido ha sido registrado correctamente";
     }
 }
