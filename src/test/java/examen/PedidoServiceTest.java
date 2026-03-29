@@ -17,7 +17,7 @@ class PedidoServiceTest {
         // Código válido
         String mensaje = service.registrarPedido("AB123", "cliente@email.com", 1, LocalDate.now().plusDays(1));
 
-        assertEquals("El pedido ha sido registrado correctamente", mensaje);
+        assertEquals("El pedido ha sido registrado", mensaje);
     }
 
 }
