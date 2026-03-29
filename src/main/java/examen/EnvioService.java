@@ -72,4 +72,10 @@ public class EnvioService {
         ESTANDAR
     }
 
+    public void validarDireccion(String direccion) {
+        if (direccion == null || direccion.isEmpty()) {
+            throw new IllegalArgumentException("La dirección debe ser válida y no nula");
+        }
+    }
+
 }
